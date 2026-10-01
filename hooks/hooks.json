@@ -1,0 +1,17 @@
+{
+  "description": "SafeRun: Jev checks every risky tool call before it runs (ALLOW defers to normal permissions, REVIEW asks, BLOCK denies).",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell|Write|Edit|MultiEdit|NotebookEdit|Read|mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/saferun-hook\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

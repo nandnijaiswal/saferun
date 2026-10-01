@@ -1,0 +1,11 @@
+#!/bin/sh
+# SafeRun hook launcher: find a Python 3.8+ (python3 / python / py) and hand the hook event on stdin to Jev.
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+JEV="$ROOT/skills/saferun/scripts/jev.py"
+for PY in python3 python py; do
+  if command -v "$PY" >/dev/null 2>&1 && "$PY" -c 'import sys; sys.exit(sys.version_info < (3, 8))' >/dev/null 2>&1; then
+    exec "$PY" "$JEV" hook
+  fi
+done
+# No usable Python: fail safe by asking the human instead of silently allowing.
+printf '%s' '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"ask","permissionDecisionReason":"SafeRun could not find Python 3.8+, so it cannot check this action. Install Python 3 to enable SafeRun."}}'

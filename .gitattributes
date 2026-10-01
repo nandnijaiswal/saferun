@@ -1,0 +1,3 @@
+# Keep LF everywhere: the hook launcher is run by `sh`, which breaks on CRLF.
+* text=auto eol=lf
+*.zip binary

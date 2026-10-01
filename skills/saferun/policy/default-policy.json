@@ -1,0 +1,88 @@
+{
+  "_comment": "SafeRun default policy. Override in ~/.saferun/policy.json (full power) or <repo>/.saferun.json (can only make things STRICTER). Lists are merged (concatenated); scalars are replaced.",
+  "mode": "balanced",
+  "thresholds": {
+    "strict":     { "review": 0.10, "block": 0.80 },
+    "balanced":   { "review": 0.30, "block": 0.90 },
+    "permissive": { "review": 0.55, "block": 0.97 }
+  },
+  "environment": "dev",
+  "auto_allow_safe": false,
+  "fail_mode": "ask",
+  "audit_log": "~/.saferun/audit.jsonl",
+
+  "protected_branches": ["main", "master", "production", "prod", "release", "release/*", "trunk", "live"],
+  "protected_paths": [],
+  "trusted_paths": ["{tmp}/**", "~/.claude/projects/*/memory/**", "~/.claude/plans/**"],
+
+  "allow_commands": [],
+  "deny_commands": [],
+  "allow_tools": [],
+  "deny_tools": [],
+  "allow_packages": [],
+
+  "popular_packages": {
+    "npm": [
+      "react", "react-dom", "preact", "lodash", "express", "axios", "chalk", "commander", "debug", "moment",
+      "request", "typescript", "webpack", "vue", "next", "eslint", "prettier", "jest", "mocha", "uuid",
+      "dotenv", "cors", "body-parser", "jsonwebtoken", "bcrypt", "bcryptjs", "mongoose", "mongodb", "mysql", "mysql2",
+      "pg", "redis", "ioredis", "sequelize", "prisma", "knex", "socket.io", "socket.io-client", "ws", "yargs",
+      "inquirer", "ora", "glob", "rimraf", "mkdirp", "fs-extra", "semver", "minimist", "async", "bluebird",
+      "underscore", "ramda", "rxjs", "zod", "joi", "yup", "ajv", "date-fns", "dayjs", "luxon",
+      "classnames", "clsx", "styled-components", "tailwindcss", "postcss", "autoprefixer", "sass", "less", "vite", "rollup",
+      "esbuild", "parcel", "nodemon", "ts-node", "tsx", "concurrently", "cross-env", "npm-run-all", "husky", "lint-staged",
+      "jquery", "bootstrap", "d3", "three", "chart.js", "electron", "puppeteer", "playwright", "cheerio", "jsdom",
+      "node-fetch", "got", "superagent", "form-data", "multer", "passport", "helmet", "morgan", "winston", "pino",
+      "graphql", "apollo-server", "redux", "react-redux", "mobx", "zustand", "react-router", "react-router-dom", "svelte", "nuxt",
+      "gatsby", "sharp", "jimp", "aws-sdk", "firebase", "firebase-admin", "stripe", "openai", "langchain", "nodemailer",
+      "twilio", "cookie-parser", "express-session", "compression", "http-proxy", "http-proxy-middleware", "colors", "color", "qs", "validator",
+      "xml2js", "yaml", "js-yaml", "marked", "highlight.js", "lru-cache", "node-cron", "cron", "sqlite3", "better-sqlite3",
+      "typeorm", "class-validator", "reflect-metadata", "fastify", "koa", "chokidar", "execa", "shelljs", "open", "nanoid",
+      "crypto-js", "bignumber.js", "decimal.js", "papaparse", "xlsx", "pdfkit", "mssql", "oracledb", "kafkajs", "amqplib",
+      "bull", "bullmq", "sinon", "chai", "supertest", "nock", "cypress", "vitest", "storybook", "webpack-cli",
+      "webpack-dev-server", "html-webpack-plugin", "css-loader", "style-loader", "babel-loader", "ts-loader", "tslib", "core-js", "immer", "immutable",
+      "ms", "deepmerge", "cross-fetch", "isomorphic-fetch", "whatwg-fetch", "event-stream", "eslint-scope", "ua-parser-js", "node-ipc", "faker",
+      "coa", "rc", "mariadb", "pnpm", "yarn", "npm", "turbo", "nx", "lerna", "framer-motion",
+      "react-query", "swr", "formik", "react-hook-form", "lodash-es", "uuidv4", "socks", "tar", "minimatch", "picomatch"
+    ],
+    "pypi": [
+      "requests", "numpy", "pandas", "scipy", "matplotlib", "seaborn", "scikit-learn", "tensorflow", "torch", "torchvision",
+      "keras", "flask", "django", "fastapi", "uvicorn", "gunicorn", "pydantic", "sqlalchemy", "alembic", "psycopg2",
+      "psycopg2-binary", "psycopg", "pymysql", "redis", "celery", "boto3", "botocore", "awscli", "google-cloud-storage", "azure-storage-blob",
+      "pytest", "pytest-cov", "mock", "coverage", "tox", "black", "flake8", "pylint", "mypy", "isort",
+      "ruff", "pre-commit", "setuptools", "wheel", "pip", "virtualenv", "poetry", "twine", "click", "typer",
+      "rich", "tqdm", "colorama", "python-dotenv", "pyyaml", "toml", "tomli", "jinja2", "markupsafe", "werkzeug",
+      "itsdangerous", "urllib3", "certifi", "chardet", "charset-normalizer", "idna", "six", "python-dateutil", "pytz", "attrs",
+      "packaging", "cryptography", "pyjwt", "bcrypt", "passlib", "paramiko", "httpx", "aiohttp", "websockets", "beautifulsoup4",
+      "lxml", "scrapy", "selenium", "playwright", "pillow", "opencv-python", "imageio", "openpyxl", "xlrd", "xlsxwriter",
+      "pyarrow", "polars", "dask", "numba", "sympy", "statsmodels", "networkx", "nltk", "spacy", "transformers",
+      "datasets", "tokenizers", "huggingface-hub", "openai", "anthropic", "langchain", "tiktoken", "sentence-transformers", "xgboost", "lightgbm",
+      "catboost", "jupyter", "ipython", "notebook", "jupyterlab", "ipykernel", "streamlit", "gradio", "dash", "plotly",
+      "bokeh", "docker", "kubernetes", "ansible", "fabric", "invoke", "psutil", "pyserial", "pexpect", "regex",
+      "simplejson", "ujson", "orjson", "msgpack", "protobuf", "grpcio", "marshmallow", "jsonschema", "python-multipart", "starlette",
+      "sanic", "tornado", "pymongo", "motor", "elasticsearch", "kafka-python", "pika", "stripe", "twilio", "sendgrid",
+      "slack-sdk", "discord-py", "tweepy", "pygame", "pyqt5", "kivy", "cython", "pybind11", "cffi", "pycparser",
+      "pyopenssl", "google-auth", "oauthlib", "requests-oauthlib", "httplib2", "cachetools", "rsa", "pyasn1", "jmespath", "s3transfer",
+      "filelock", "platformdirs", "distlib", "greenlet", "gevent", "eventlet", "jellyfish", "dateparser", "arrow", "pendulum",
+      "faker", "factory-boy", "hypothesis", "responses", "freezegun", "pytest-mock", "pytest-asyncio", "uvloop", "watchdog", "schedule",
+      "apscheduler", "loguru", "structlog", "sentry-sdk", "prometheus-client", "opentelemetry-api", "ctx", "uv", "pipx", "hatch",
+      "django-rest-framework", "djangorestframework", "flask-cors", "flask-sqlalchemy", "celery-redbeat", "pytest-xdist", "nox", "sphinx", "mkdocs", "jupyter-client"
+    ]
+  },
+
+  "known_malicious": {
+    "_comment": "Seed list of historically malicious / hijacked packages. Extend it in ~/.saferun/policy.json. 'name@version' pins a specific bad release.",
+    "npm": [
+      "crossenv", "cross-env.js", "d3.js", "fabric-js", "ffmepg", "gruntcli", "http-proxy.js", "jquery.js", "mongose", "mssql.js",
+      "mssql-node", "mysqljs", "nodecaffe", "nodefabric", "node-fabric", "nodeffmpeg", "nodemailer-js", "nodemailer.js", "nodemssql", "node-opencv",
+      "node-opensl", "node-openssl", "noderequest", "nodesass", "nodesqlite", "node-tkinter", "opencv.js", "openssl.js", "proxy.js", "shadowsock",
+      "sqliter", "sqlserver", "babelcli", "flatmap-stream", "peacenotwar",
+      "event-stream@3.3.6", "eslint-scope@3.7.2", "ua-parser-js@0.7.29", "ua-parser-js@0.8.0", "ua-parser-js@1.0.0",
+      "coa@2.0.3", "rc@1.2.9", "node-ipc@10.1.1", "node-ipc@10.1.2", "node-ipc@10.1.3", "colors@1.4.1", "colors@1.4.2", "faker@6.6.6"
+    ],
+    "pypi": [
+      "colourama", "jeilyfish", "python3-dateutil", "setup-tools", "urlib3", "acqusition", "apidev-coop", "django-server", "diango", "djago",
+      "ctx@0.2.6", "ctx@0.1.2", "ctx@0.2.2"
+    ]
+  }
+}

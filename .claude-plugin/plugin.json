@@ -1,0 +1,13 @@
+{
+  "name": "saferun",
+  "displayName": "SafeRun",
+  "version": "1.0.0",
+  "description": "Safety layer for AI coding agents. Jev, a deterministic decision engine, checks every command, file edit, dependency, MCP tool call and deploy before it runs: ALLOW, REVIEW or BLOCK. Claude explains the verdict and the safer path.",
+  "author": {
+    "name": "nandnijaiswal"
+  },
+  "homepage": "https://github.com/nandnijaiswal/saferun",
+  "repository": "https://github.com/nandnijaiswal/saferun",
+  "license": "MIT",
+  "keywords": ["safety", "guardrails", "security", "hooks", "agents", "devtools", "claude-code"]
+}

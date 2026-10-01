@@ -1,0 +1,14 @@
+{
+  "name": "saferun",
+  "description": "SafeRun: every agent action, checked before it runs.",
+  "owner": {
+    "name": "nandnijaiswal"
+  },
+  "plugins": [
+    {
+      "name": "saferun",
+      "source": "./",
+      "description": "Safety layer for AI coding agents. Jev scores every command, edit, install, MCP call and deploy as ALLOW / REVIEW / BLOCK before it runs."
+    }
+  ]
+}
